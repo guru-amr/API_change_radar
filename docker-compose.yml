@@ -1,0 +1,26 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: api-change-radar-db
+    environment:
+      POSTGRES_DB: apichangeradar
+      POSTGRES_USER: apichangeradar
+      POSTGRES_PASSWORD: apichangeradar
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U apichangeradar"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: api-change-radar-mailhog
+    ports:
+      - "1025:1025"
+      - "8025:8025"
+volumes:
+  pg_data:
+

@@ -1,0 +1,30 @@
+{
+  "openapi": "3.0.1",
+  "info": {"title": "Payment API", "version": "1.0.0"},
+  "paths": {
+    "/payments": {
+      "post": {
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "required": ["id", "amount", "payment_status", "currency"],
+                  "properties": {
+                    "id": {"type": "string"},
+                    "amount": {"type": "number"},
+                    "payment_status": {"type": "string"},
+                    "currency": {"type": "string"}
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
